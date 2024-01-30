@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\backend\DashboardController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,5 +16,19 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('login');
+});
+
+Auth::routes([
+    'register' => false, // Registration Routes...
+    'reset' => false, // Password Reset Routes...
+    'verify' => false, // Email Verification Routes...
+]);
+
+// Auth Middleware
+Route::middleware(['auth'])->group(function () {
+    Route::prefix('backend')->name('backend.')->group(function () {
+        Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+        Route::get('/main-menu', [DashboardController::class, 'mainMenu'])->name('main-menu');
+    });
 });
