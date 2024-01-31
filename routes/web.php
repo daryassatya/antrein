@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\backend\DashboardController;
+use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -30,5 +31,8 @@ Route::middleware(['auth'])->group(function () {
     Route::prefix('backend')->name('backend.')->group(function () {
         Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
         Route::get('/main-menu', [DashboardController::class, 'mainMenu'])->name('main-menu');
+
+        // Product
+        Route::resource('/product', ProductController::class);
     });
 });
