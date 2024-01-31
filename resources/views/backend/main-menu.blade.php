@@ -16,7 +16,7 @@
 
 @section('content')
     <div class="row mx-lg-100 mt-20">
-        @can('admin')
+        {{-- @can('admin') --}}
             {{-- <div class="col-lg-4 col-md-6" onclick="location.href='{{ route('dashboard.posts.index') }}'">
                 <div class="box card">
                     <div class="box-body p-10">
@@ -73,7 +73,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4 col-md-6" onclick="location.href='{{ route('pos.index') }}'">
+            <div class="col-lg-4 col-md-6" onclick="location.href='#'">
                 <div class="box card">
                     <div class="box-body p-10">
                         <div class="d-flex align-items-center">
@@ -87,7 +87,7 @@
                     </div>
                 </div>
             </div>
-            @endcan
+            {{-- @endcan --}}
             {{-- <div class="col-lg-4 col-md-6" onclick="location.href='{{ route('manage-complaint.index') }}'">
                 <div class="box card">
                     <div class="box-body p-10">
