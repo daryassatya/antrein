@@ -1,12 +1,11 @@
 @extends('backend.layouts.app')
 
-@section('breadcumb')
-    <li class="breadcrumb-item"><a href="{{ route('dashboard') }}"><i class="mdi mdi-view-grid"></i></a></li>
-    <li class="breadcrumb-item" aria-current="page"><a href="{{ route('mainmenu') }}">Main Menu</a></li>
-    <li class="breadcrumb-item active" aria-current="page">Create</li>
-@endsection
-
 @push('styles')
+<style>
+    .cursor-pointer{
+        cursor: pointer;
+    }
+</style>
 @endpush
 
 @section('content')
@@ -19,85 +18,23 @@
 
                 <div class="box-body">
                     <div class="row row-cols-1 row-cols-md-3 g-4">
-                        <div class="col">
-                            <div class="card">
-                                <img je src="https://decotatoo.systems/images/product/981699866232.png" class="card-img-top"
-                                    alt="...">
-                                <div class="card-body p-0 text-center">
-                                    <p class="card-title mb-0">TYPHOON</p>
-                                    <span style="font-size: 10px; margin: 0"> IDR 338,949.00</span>
+                        @foreach ($products as $product)
+                            <div class="col cursor-pointer" onclick="showModalQuantity('{{ $product->id }}')">
+                                <div class="card">
+                                    <img je src="{{ asset('product/image/' . $product->image) }}" class="card-img-top" alt="Product Image" width="250px">
+                                    <div class="card-body p-0 text-center">
+                                        <p class="card-title mb-0">{{ $product->product_name }}</p>
+                                        <span style="font-size: 10px; margin: 0"> IDR {{ number_format($product->price, 2) }}</span>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col">
-                            <div class="card">
-                                <img je src="https://decotatoo.systems/images/product/541698750131.png" class="card-img-top"
-                                    alt="...">
-                                <div class="card-body p-0 text-center">
-                                    <p class="card-title mb-0">ORIGIN (BIG)</p>
-                                    <span style="font-size: 10px; margin: 0">IDR 338,949.00</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="card">
-                                <img je src="https://decotatoo.systems/images/product/161698721883.png" class="card-img-top"
-                                    alt="...">
-                                <div class="card-body p-0 text-center">
-                                    <p class="card-title mb-0">QUENELLE</p>
-                                    <span style="font-size: 10px; margin: 0">IDR 338,949.00</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="card">
-                                <img je src="https://decotatoo.systems/images/product/221698721935.png" class="card-img-top"
-                                    alt="...">
-                                <div class="card-body p-0 text-center">
-                                    <p class="card-title mb-0">NOEL SAVARIN</p>
-                                    <span style="font-size: 10px; margin: 0">IDR 387,370.00 </span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="card">
-                                <img je src="https://decotatoo.systems/images/product/651698722072.png" class="card-img-top"
-                                    alt="...">
-                                <div class="card-body p-0 text-center">
-                                    <p class="card-title mb-0">SIGNATURE</p>
-                                    <span style="font-size: 10px; margin: 0">IDR 338,949.00</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="card">
-                                <img je src="https://decotatoo.systems/images/product/321698380795.png" class="card-img-top"
-                                    alt="...">
-                                <div class="card-body p-0 text-center">
-                                    <p class="card-title mb-0">TED-Y'S</p>
-                                    <span style="font-size: 10px; margin: 0">IDR 338,949.00</span>
-                                </div>
-                            </div>
+                        @endforeach
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            {{ $products->links('vendor.pagination.custom') }}
                         </div>
                     </div>
-
-                </div>
-                <div class="box-footer d-flex justify-content-center m-0 p-0 text-center">
-                    <nav class="m-0 p-0" aria-label="...">
-                        <ul class="pagination m-0 p-0">
-                            <li class="page-item disabled">
-                                <a class="page-link">Previous</a>
-                            </li>
-                            <li class="page-item"><a class="page-link" href="#">1</a></li>
-                            <li class="page-item active" aria-current="page">
-                                <a class="page-link" href="#">2</a>
-                            </li>
-                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                            <li class="page-item">
-                                <a class="page-link" href="#">Next</a>
-                            </li>
-                        </ul>
-                    </nav>
                 </div>
             </div>
         </div>
@@ -217,7 +154,38 @@
             </div>
         </div>
     </div>
+
+    {{-- MODAL --}}
+    <div id="modalProductQuantity" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modalProductQuantityLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4 class="modal-title" id="modalProductQuantityLabel">Input Quantity Product</h4>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+                    <div class="form-group">
+                        <label for="">Input Quantity</label>
+                        <input type="number" name="qty" min="1" class="form-control" id="qty">
+                    </div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+					<button type="submit" class="btn btn-success">Submit</button>
+				</div>
+			</div>
+		</div>
+	</div>
 @endsection
 
 @push('scripts')
+<script>
+    function showModalQuantity(productID)
+    {
+        $('#product_id').html(productID);
+        $('#qty').val('');
+        var myModal = new bootstrap.Modal(document.getElementById('modalProductQuantity'));
+        myModal.show();
+    }
+</script>
 @endpush
