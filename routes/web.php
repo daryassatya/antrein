@@ -33,7 +33,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
         Route::get('/main-menu', [DashboardController::class, 'mainMenu'])->name('main-menu');
 
-        // uSER
+        // USER
         Route::resource('/user', UserController::class);
 
         // Product
