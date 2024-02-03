@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\backend\DashboardController;
+use App\Http\Controllers\PointOfSalesController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
@@ -38,5 +39,8 @@ Route::middleware(['auth'])->group(function () {
 
         // Product
         Route::resource('/product', ProductController::class);
+
+        // POS
+        Route::resource('pos', PointOfSalesController::class);
     });
 });
