@@ -19,8 +19,27 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
+    return view('frontend.index', [
+        'title' => "Antrein - Selamat Datang!",
+    ]);
+})->name('/');
+
+Route::get('/paket-layanan', function () {
+    return view('frontend.paket-layanan', [
+        'title' => "Antrein - Paket Layanan",
+    ]);
+})->name('paket-layanan');
+
+Route::get('/tentang', function () {
+    return view('frontend.tentang', [
+        'title' => "Antrein - Tentang",
+    ]);
+})->name('tentang');
+
+Route::get('/login', function () {
     return redirect()->route('login');
-});
+})->name('login');
+
 
 Auth::routes([
     'register' => false, // Registration Routes...
