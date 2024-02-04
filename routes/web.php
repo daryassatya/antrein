@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AntriController;
 use App\Http\Controllers\backend\DashboardController;
 use App\Http\Controllers\PointOfSalesController;
 use App\Http\Controllers\ProductController;
@@ -36,7 +37,8 @@ Route::get('/tentang', function () {
     ]);
 })->name('tentang');
 
-// Route::get('/antri/{perusahaan}', )->name('tentang');
+Route::get('/antri/{perusahaan}',[AntriController::class, 'index'] )->name('antri');
+Route::post('/antri/ambil-antrian/{perusahaanID}/{userID}',[AntriController::class, 'ambilAntrian'] )->name('ambil-antrian');
 
 Route::get('/login', function () {
     return redirect()->route('login');
