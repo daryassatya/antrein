@@ -36,13 +36,14 @@ Route::get('/tentang', function () {
     ]);
 })->name('tentang');
 
+// Route::get('/antri/{perusahaan}', )->name('tentang');
+
 Route::get('/login', function () {
     return redirect()->route('login');
 })->name('login');
 
 
 Auth::routes([
-    'register' => false, // Registration Routes...
     'reset' => false, // Password Reset Routes...
     'verify' => false, // Email Verification Routes...
 ]);
