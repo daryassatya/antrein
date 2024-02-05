@@ -28,7 +28,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
@@ -60,7 +60,11 @@ class LoginController extends Controller
         } else {
             // Jika user ada, coba autentikasi
             if (auth()->attempt(array($fieldType => $input['username'], 'password' => $input['password']))) {
-                return redirect()->route('backend.main-menu');
+                if (!$user->perusahaan_id) {
+                    return redirect()->back();
+                }else{
+                    return redirect()->route('backend.main-menu');
+                }
             } else {
                 // Password salah
                 return redirect()->back()->withErrors('The password you entered is incorrect.');

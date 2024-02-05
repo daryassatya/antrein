@@ -1,12 +1,13 @@
 <?php
 
+use App\Http\Controllers\AntriController;
+use App\Http\Controllers\backend\DashboardController;
+use App\Http\Controllers\PointOfSalesController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CartController;
-use App\Http\Controllers\UserController;
-use App\Http\Controllers\ProductController;
-use App\Http\Controllers\PointOfSalesController;
-use App\Http\Controllers\backend\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,6 +38,8 @@ Route::get('/tentang', function () {
     ]);
 })->name('tentang');
 
+Route::get('/antri/{perusahaan}',[AntriController::class, 'index'] )->name('antri');
+Route::post('/antri/ambil-antrian/{perusahaanID}/{userID}',[AntriController::class, 'ambilAntrian'] )->name('ambil-antrian');
 
 Route::get('/login', function () {
     return redirect()->route('login');
@@ -44,7 +47,6 @@ Route::get('/login', function () {
 
 
 Auth::routes([
-    'register' => false, // Registration Routes...
     'reset' => false, // Password Reset Routes...
     'verify' => false, // Email Verification Routes...
 ]);
