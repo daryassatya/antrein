@@ -71,7 +71,7 @@
                             <div class="col-12 mt-3">
                                 <ul class="list-group overflow-auto" style="height: 330px;">
                                     @foreach ($queues as $queue)
-                                        <li class="list-group-item"><span></span> {{ $loop->iteration }}. {{ $queue->user->name }} {{ $queue->user->id == Auth::user()->id ? " - Posisi Anda": "" }}</li>
+                                        <li class="list-group-item"><span></span> {{ $loop->iteration }}. {{ $queue->user->name }} {{ $queue->user->id == (Auth::user()->id ?? 0) ? " - Posisi Anda": "" }}</li>
                                     @endforeach
                                     {{-- <li class="list-group-item">Nama sesseorang</li>
                                     <li class="list-group-item">Nama sesseorang</li>
