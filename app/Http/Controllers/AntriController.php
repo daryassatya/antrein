@@ -34,13 +34,18 @@ class AntriController extends Controller
             return abort(404);
         }
         
-        $checkPerusahaanData = Perusahaan::where('id', $perusahaanID)->first();
-        if (!$checkPerusahaanData) {
-            return abort(404);
-        }
-        
-
         try {
+            $checkPerusahaanData = Perusahaan::where('id', $perusahaanID)->first();
+            if (!$checkPerusahaanData) {
+                return abort(404);
+            }
+
+            $checkQueue = Queue::where('perusahaan_id', $perusahaanID)->where('user_id', $userID)->first();
+            if($checkQueue){
+
+                return redirect()->back()->with('success', "Anda Sudah Ambil Antrian");
+            }
+
             $data = new Queue();
             $data->perusahaan_id = $perusahaanID;
             $data->user_id = $userID;

@@ -2,11 +2,11 @@
 @section('content')
 <section class="bg-gradient-light padding padding-top">
     <div class="center max-width-l">
-      <h1 class="hero">Find the perfect plan for your business.</h1>
+      <h1 class="hero">Pilih Layanan Yang Anda Butuhkan.</h1>
     </div>
     <div class="row margin-top max-width-l">
       <div class="col-one-third card card-content">
-        <p class="muted">Free Forever</p>
+        <p class="muted">Paket Dasar</p>
         <img src="{{ asset('assets/frontend/media/content/pricing-1.png') }}" width="100" height="100">
         <h5>Modul + Documentation</h5>
         <h2>
@@ -20,10 +20,10 @@
           <li>Kemudahan Penggunaan</li>
           <li>Dokumentasi Lengkap</li>
         </ul>
-        <a href="signup.html" class="button button-secondary full-width space-top" role="button">Hubungi Kami</a>
+        <a href="signup.html" class="button button-primary full-width space-top" role="button">Hubungi Kami</a>
       </div>
       <div class="col-one-third card card-content">
-        <p class="muted">For Teams</p>
+        <p class="muted">Paket Startup</p>
         <img src="{{ asset('assets/frontend/media/content/pricing-2.png') }}" width="100" height="100">
         <h5>Modul + Sistem</h5>
         <h2>
@@ -32,13 +32,13 @@
         </h2>
         <p class="paragraph">Memberdayakan Tim dengan Manajemen Antrian yang Mulus.</p>
         <ul class="space-bottom">
-          <li>Semua Fitur Paket Free</li>
+          <li>Semua Fitur Paket Dasar</li>
           <li>Peningkatan Sistem</li>
           <li>Dukungan Tim</li>
           <li>Perbarui Otomatis</li>
           <li>Prioritas dalam Pengembangan Fitur Baru</li>
         </ul>
-        <a href="signup.html" class="button button-secondary full-width space-top" role="button">Hubungi Kami</a>
+        <a href="signup.html" class="button button-primary full-width space-top" role="button">Hubungi Kami</a>
       </div>
       <div class="col-one-third card card-content">
         <p class="muted">For Enterprises</p>

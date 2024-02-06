@@ -244,8 +244,6 @@
                                 async: false,
                                 success: function(response) {
                                     totalHarga += response.price;
-                                    totalPajak += totalPajak * 0.11;
-                                    console.log(item)
                                     $('#item-chart-area').append(`<div class="col-12">
                     <div class="card col-12 mb-3">
                         <div class="row">
@@ -256,7 +254,7 @@
                             <div class="col-6">
                                 <div class="card-body">
                                     <h5 class="card-title">${ response.product_name }</h5>
-                                    <span style="font-size: 15px; margin: 0">Rp${response.price}.00</span>
+                                    <span style="font-size: 15px; margin: 0">Rp${numberWithCommas(response.price)}.00</span>
                                 </div>
                             </div>
                             <div class="col-2 my-auto">
@@ -275,7 +273,8 @@
                     $('#modalProductQuantity').hide()
                     console.log();
                 });
-
+                $('#total-harga').text(numberWithCommas(totalHarga)+'.00')
+                $('#total-pajak').text(numberWithCommas(totalHarga*0.11) +'.00')
             }
 
         }

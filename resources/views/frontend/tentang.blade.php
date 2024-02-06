@@ -58,19 +58,19 @@
             <div class="center margin-bottom max-width-l">
                 <div class="row margin-bottom min-two-columns">
                     <div class="col-one-sixth">
-                        <img src="../opalin/media/person/person-1.png" alt="Asep Ramdani">
+                        <img src="{{ asset('assets/frontend/media/person/person-1.png') }}" alt="Asep Ramdani">
                         <h5>Asep Ramdani</h5>
                     </div>
                     <div class="col-one-sixth">
-                        <img src="../opalin/media/person/person-2.png" alt="Devi Triani Octavia">
+                        <img src="{{ asset('assets/frontend/media/person/person-2.png') }}" alt="Devi Triani Octavia">
                         <h5>Devi Triani Octavia</h5>
                     </div>
                     <div class="col-one-sixth">
-                        <img src="../opalin/media/person/person-3.png" alt="Dimas Aryasatya">
+                        <img src="{{ asset('assets/frontend/media/person/person-3.png') }}" alt="Dimas Aryasatya">
                         <h5>Dimas Aryasatya</h5>
                     </div>
                     <div class="col-one-sixth">
-                        <img src="../opalin/media/person/person-4.png" alt="Helena Meiliani">
+                        <img src="{{ asset('assets/frontend/media/person/person-4.png') }}" alt="Helena Meiliani">
                         <h5>Helena Meiliani</h5>
                     </div>
                 </div>
@@ -78,19 +78,19 @@
             <div class="center margin-bottom max-width-l">
                 <div class="row margin-bottom min-two-columns">
                     <div class="col-one-sixth">
-                        <img src="../opalin/media/person/person-5.png" alt="Khanaya Firdausya Azzahra">
+                        <img src="{{ asset('assets/frontend/media/person/person-5.png') }}" alt="Khanaya Firdausya Azzahra">
                         <h5>Khanaya Firdausya Azzahra</h5>
                     </div>
                     <div class="col-one-sixth">
-                        <img src="../opalin/media/person/person-6.png" alt="Kiki Lidya Koswara">
+                        <img src="{{ asset('assets/frontend/media/person/person-6.png') }}" alt="Kiki Lidya Koswara">
                         <h5>Kiki Lidya Koswara</h5>
                     </div>
                     <div class="col-one-sixth">
-                        <img src="../opalin/media/person/person-7.png" alt="Rafiqa Raisha Rahimi">
+                        <img src="{{ asset('assets/frontend/media/person/person-7.png') }}" alt="Rafiqa Raisha Rahimi">
                         <h5>Rafiqa Raisha Rahimi</h5>
                     </div>
                     <div class="col-one-sixth">
-                        <img src="../opalin/media/person/person-8.png" alt="Ubaydillah Loansyah">
+                        <img src="{{ asset('assets/frontend/media/person/person-8.png') }}" alt="Ubaydillah Loansyah">
                         <h5>Ubaydillah Loansyah</h5>
                     </div>
                 </div>

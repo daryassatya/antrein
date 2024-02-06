@@ -9,7 +9,7 @@
             <p class="lead">AntreIn merupakan produk yang menawarkan sebuah kemudahan dalam suatu bentuk modul
               tambahan dari sistem Point of Sales. Modul ini memberikan sebuah Solusi untuk suatu aktifitas transaksi
               yang membutuhkan antrian.</p>
-            <a href="signup.html" class="button button-primary space-top" role="button">Mulai</a>
+            <a href="{{ asset('paket-layanan') }}" class="button button-primary space-top" role="button">Mulai</a>
           </div>
         </div>
         <div class="col-one-half middle">

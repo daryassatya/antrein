@@ -48,7 +48,7 @@
 
     <div class="container mt-5 mb-5">
         <div class="row pt-5">
-            <div class="col-3 ms-auto">
+            <div class="col-lg-3 col-12 ms-auto">
                 <div class="card">
                     <div class="card-body" style="background: #E0E0E0;">
                         <h4>Estimasi waktu tunggu :</h4>
@@ -71,7 +71,7 @@
                             <div class="col-12 mt-3">
                                 <ul class="list-group overflow-auto" style="height: 330px;">
                                     @foreach ($queues as $queue)
-                                        <li class="list-group-item">{{ $queue->user->name }}</li>
+                                        <li class="list-group-item"><span></span> {{ $loop->iteration }}. {{ $queue->user->name }} {{ $queue->user->id == Auth::user()->id ? " - Posisi Anda": "" }}</li>
                                     @endforeach
                                     {{-- <li class="list-group-item">Nama sesseorang</li>
                                     <li class="list-group-item">Nama sesseorang</li>
