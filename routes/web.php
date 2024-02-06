@@ -7,6 +7,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CartController;
 
 /*
 |--------------------------------------------------------------------------
@@ -55,14 +56,16 @@ Route::middleware(['auth'])->group(function () {
     Route::prefix('backend')->name('backend.')->group(function () {
         Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
         Route::get('/main-menu', [DashboardController::class, 'mainMenu'])->name('main-menu');
-
+        
         // USER
         Route::resource('/user', UserController::class);
-
+        
         // Product
         Route::resource('/product', ProductController::class);
-
+        
         // POS
         Route::resource('pos', PointOfSalesController::class);
+        Route::post('/add-item', [CartController::class, 'addItem'])->name('add-item');
+        Route::post('/get-product', [CartController::class, 'getProduct'])->name('get-product');
     });
 });
