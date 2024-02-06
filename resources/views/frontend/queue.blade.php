@@ -123,9 +123,14 @@
                             <input type="password" class="form-control" name="password">
                         </div>
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">Login</button>
+                    <div class="modal-footer d-flex flex-row justify-content-between">
+                        <div>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">Login</button>
+                        </div>
+                        <div>
+                            <a href="{{ route('register') }}" class="btn btn-success">Register</a>
+                        </div>
                     </div>
                 </form>
             </div>
