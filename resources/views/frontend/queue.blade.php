@@ -6,22 +6,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bootstrap 5 Starter Pack with Header</title>
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 </head>
 
 <body>
 
     <header>
-    <!-- Fixed navbar -->
+        <!-- Fixed navbar -->
         <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
             <div class="container-fluid">
                 <a class="navbar-brand text-dark" href="#">Fixed navbar</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
+                    aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="collapse navbar-collapse" id="navbarCollapse">
-                    <ul class="navbar-nav me-auto mb-2 mb-md-0">
-                    {{-- <li class="nav-item">
+                <div class="navbar-collapse collapse" id="navbarCollapse">
+                    <ul class="navbar-nav mb-md-0 mb-2 me-auto">
+                        {{-- <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="#">Home</a>
                     </li>
                     <li class="nav-item">
@@ -46,13 +48,13 @@
         </nav>
     </header>
 
-    <div class="container mt-5 mb-5">
+    <div class="container mb-5 mt-5">
         <div class="row pt-5">
             <div class="col-lg-3 col-12 ms-auto">
                 <div class="card">
                     <div class="card-body" style="background: #E0E0E0;">
                         <h4>Estimasi waktu tunggu :</h4>
-                        <h5>15 menit</h5>
+                        <h5>-</h5>
                     </div>
                 </div>
             </div>
@@ -65,38 +67,32 @@
                             <div class="col-12">
                                 @include('components.flash-message')
                             </div>
-                            <div class="col-6 mx-auto text-center bg-dark text-light" style="border-radius: 25px;">
-                                <p style="font-size: 80px;">10</p>
+                            <div class="col-6 bg-dark text-light mx-auto text-center" style="border-radius: 25px;">
+                                <p style="font-size: 80px;" id="count-person-area">0</p>
                             </div>
                             <div class="col-12 mt-3">
                                 <ul class="list-group overflow-auto" style="height: 330px;">
                                     @foreach ($queues as $queue)
-                                        <li class="list-group-item"><span></span> {{ $loop->iteration }}. {{ $queue->user->name }} {{ $queue->user->id == (Auth::user()->id ?? 0) ? " - Posisi Anda": "" }}</li>
+                                        <li class="list-group-item count-person"><span></span> {{ $loop->iteration }}.
+                                            {{ $queue->user->name }}
+                                            {{ $queue->user->id == (Auth::user()->id ?? 0) ? ' - Posisi Anda' : '' }}
+                                        </li>
                                     @endforeach
-                                    {{-- <li class="list-group-item">Nama sesseorang</li>
-                                    <li class="list-group-item">Nama sesseorang</li>
-                                    <li class="list-group-item">Nama sesseorang</li>
-                                    <li class="list-group-item">Nama sesseorang</li>
-                                    <li class="list-group-item">Nama sesseorang</li>
-                                    <li class="list-group-item">Nama sesseorang</li>
-                                    <li class="list-group-item">Nama sesseorang</li>
-                                    <li class="list-group-item">Nama sesseorang</li>
-                                    <li class="list-group-item">Nama sesseorang</li>
-                                    <li class="list-group-item">Nama sesseorang</li>
-                                    <li class="list-group-item">Nama sesseorang</li>
-                                    <li class="list-group-item">Nama sesseorang</li> --}}
                                 </ul>
                             </div>
                         </div>
                     </div>
-                    <div class="card-footer text-center py-3" style="border-top: 0px; background: #fff;">
+                    <div class="card-footer py-3 text-center" style="border-top: 0px; background: #fff;">
                         @if (auth()->check())
-                        <form action="{{ route('ambil-antrian', ['perusahaanID' => $perusahaan->id, 'userID' => Auth::user()->id]) }}" method="post">
-                            @csrf
-                            <button type="submit" class="btn btn-dark">Ambil Antrian</button>
-                        </form>
+                            <form
+                                action="{{ route('ambil-antrian', ['perusahaanID' => $perusahaan->id, 'userID' => Auth::user()->id]) }}"
+                                method="post">
+                                @csrf
+                                <button type="submit" class="btn btn-dark">Ambil Antrian</button>
+                            </form>
                         @else
-                            <button class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal">Ambil Antrian</button>
+                            <button class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal">Ambil
+                                Antrian</button>
                         @endif
                     </div>
                 </div>
@@ -123,7 +119,7 @@
                             <input type="password" class="form-control" name="password">
                         </div>
                     </div>
-                    <div class="modal-footer d-flex flex-row justify-content-between">
+                    <div class="modal-footer d-flex justify-content-between flex-row">
                         <div>
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                             <button type="submit" class="btn btn-primary">Login</button>
@@ -137,9 +133,36 @@
         </div>
     </div>
     <!-- Bootstrap Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+        integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"
+        integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous">
+    </script>
+    <script src="https://code.jquery.com/jquery-3.7.1.slim.min.js"
+        integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8=" crossorigin="anonymous"></script>
+    <script>
+        init();
 
+        function checkClass() {
+            setInterval(function() {
+                init();
+            }, 5000); // Check every 5 seconds
+        }
+
+        // Call the function to start checking
+        checkClass();
+
+        function init() {
+            let elements = document.querySelectorAll('.count-person');
+            let count = elements.length;
+            if (elements.length > 0) {
+                $('#count-person-area').text(count)
+            } else {
+                console.log("Element not found!");
+            }
+        }
+    </script>
 </body>
 
 </html>

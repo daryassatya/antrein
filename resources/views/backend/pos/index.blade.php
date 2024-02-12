@@ -110,7 +110,7 @@
 
                 </div>
                 <div class="box-footer text-center">
-                    <span>Current User: Dimas Aryasatya</span>
+                    {{-- <span>Current User: Dimas Aryasatya</span> --}}
                     <hr>
                     <div class="row">
                         <div class="col-6 text-end">Total Harga:</div>
@@ -121,7 +121,7 @@
                         <div class="col-6 mx-auto" id="total-pajak"></div>
                     </div>
                     <hr>
-                    <span class="fw-bold" style="font-size: 15px; margin: 0 10px 0 0">Total IDR 854,898.00</span>
+                    <h5 id="total-price"></h5>
                     <button type="button" class="btn btn-outline-primary">Checkout ></button>
                 </div>
             </div>
@@ -132,40 +132,20 @@
 
                 <div class="box-body">
                     <div class="list-group">
+                        @foreach ($queues as $queue)
                         <a href="#" class="list-group-item list-group-item-action active" aria-current="true">
                             <div class="d-flex align-items-center">
                                 <div class="flex-shrink-0">
-                                    <img height="25" width="25" src="{{ asset('images/profile1.jpg') }}"
-                                        alt="...">
+                                    <img height="25" width="25" src="{{ asset('images/'.$queue->user->image) }}"
+                                    alt="...">
                                 </div>
                                 <div class="flex-grow-1 ms-3">
-                                    <span>1. Dimas Aryasatya</span>
+                                    <span>{{ $loop->iteration }}. {{ $queue->user->name }}</span>
                                     <span class="d-flex flex-end">Current Queue</span>
                                 </div>
                             </div>
                         </a>
-                        <a href="#" class="list-group-item list-group-item-action" aria-current="true">
-                            <div class="d-flex align-items-center">
-                                <div class="flex-shrink-0">
-                                    <img height="25" width="25" src="{{ asset('images/profile2.jpg') }}"
-                                        alt="...">
-                                </div>
-                                <div class="flex-grow-1 ms-3">
-                                    <span>2. Alandra Ravi</span>
-                                </div>
-                            </div>
-                        </a>
-                        <a href="#" class="list-group-item list-group-item-action" aria-current="true">
-                            <div class="d-flex align-items-center">
-                                <div class="flex-shrink-0">
-                                    <img height="25" width="25" src="{{ asset('images/profile3.jpg') }}"
-                                        alt="...">
-                                </div>
-                                <div class="flex-grow-1 ms-3">
-                                    <span>3. Eza Faizal Gibran</span>
-                                </div>
-                            </div>
-                        </a>
+                        @endforeach
                     </div>
                 </div>
             </div>
@@ -230,7 +210,7 @@
 
                 $('#item-chart-area').html('');
                 var totalHarga = 0;
-                var totalPajak = 0;
+                
                 $.each(cartList, function(index, item) {
                             $.ajax({
                                 type: 'POST',
@@ -273,8 +253,11 @@
                     $('#modalProductQuantity').hide()
                     console.log();
                 });
+                var totalPajak = totalHarga*0.11;
                 $('#total-harga').text(numberWithCommas(totalHarga)+'.00')
-                $('#total-pajak').text(numberWithCommas(totalHarga*0.11) +'.00')
+                $('#total-pajak').text(numberWithCommas(totalPajak)+'.00')
+                $('#total-price').text(numberWithCommas(totalHarga+totalPajak) +'.00')
+                
             }
 
         }
@@ -294,5 +277,7 @@
         function numberWithCommas(x) {
             return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
         }
+        
+
     </script>
 @endpush

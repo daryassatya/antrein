@@ -20,7 +20,8 @@ class UserController extends Controller
     public function index()
     {
         $data['page_title'] = 'Users List';
-        $data['users'] = User::get();
+        $data['users'] = User::whereNotNull('perusahaan_id')->orderby('id', 'asc')->get();
+
 
         return view('backend.users.index', $data);
     }
@@ -63,7 +64,7 @@ class UserController extends Controller
             $user->email = $request->email;
             $user->phone = $request->phone;
             $user->address = $request->address;
-
+            $user->password = Hash::make($request->password);
             // Image
             $documentPath = public_path('user/image/');
 
